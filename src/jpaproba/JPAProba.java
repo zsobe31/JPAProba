@@ -3,6 +3,7 @@
 package jpaproba;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.ParameterMode;
@@ -47,16 +48,21 @@ public class JPAProba {
 //        spq.execute();
 
         // boríék hozzáadása
-//        Boritek b = Boritek.addNewBoritek(em, "A1-5", 120, "Alma", "Zotya");
-//        if (b != null) {
-//            System.out.println("Sikeres hozzáadás!");
+        Boritek b = Boritek.addNewBoritek(em, "J1-12", 23, "Peti", "Gergő");
+        if (b != null) {
+            System.out.println("Sikeres hozzáadás!");
+        }
+        
+//        List<Boritek> Lista = Boritek.getAllBoritek(em);
+//        for(Boritek l : Lista){
+//            System.out.println(l.getCimzet() + "\t" + l.getMeret());    
 //        }
         
         // boriték törlése
-        Boritek b1 = Boritek.deleteBoritekById(em, 13);
-        if (b1 == null) {
-            System.out.println("Sikeres törlés!");
-        }
+//        Boritek b1 = Boritek.deleteBoritekById(em, 17);
+//        if (b1 == null) {
+//            System.out.println("Sikeres törlés!");
+//        }
 
         // botiték módosítása
 //        Boritek b2 = Boritek.updateBoritek(em, "C-12", 50, "Gyula", "Tivadar", 13);

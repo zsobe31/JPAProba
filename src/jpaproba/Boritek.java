@@ -3,7 +3,9 @@
 package jpaproba;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -120,6 +122,20 @@ public class Boritek implements Serializable {
     public void setIdo(Date ido) {
         this.ido = ido;
     }
+    
+    public static List<Boritek> getAllBoritek(EntityManager em){
+        List<Boritek> boritekok = new ArrayList<>();
+        
+        StoredProcedureQuery spq = em.createStoredProcedureQuery("getAllBoritek");
+        List<Object[]> elemek = spq.getResultList();
+        for(Object[] elem : elemek){
+            Boritek b = em.find(Boritek.class, elem[0]);
+            boritekok.add(b);
+        }
+        
+        return boritekok;
+    } 
+    
     
     // új boríték hozzáadása
     public static Boritek addNewBoritek(EntityManager em, String meret, int suly, String felado, String cimzett){
